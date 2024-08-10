@@ -18,7 +18,7 @@ class _DemoProviderPageState extends State<DemoProviderPage> {
       body: Center(
         child: Container(
           child: Provider<String>(
-              create: (context) => "Hello" ,
+              create: (context) => "Hi" ,
               child: ChildWidget()
           ),
         ),
@@ -34,9 +34,14 @@ class ChildWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // 1 Lay du lieu thong qua lop
     String text = Provider.of(context);
+    // 2 Lay du lieu thong qua widget Consumer
     return Column(
       children: [
-        Text("Child widget $text")
+        Consumer<String>(
+            builder: (BuildContext context, String value, Widget? child) {
+              return Text("Child widget $value");
+            },
+        )
       ],
     );
   }
