@@ -8,6 +8,12 @@ class Counter extends ChangeNotifier {
     count += 1;
     notifyListeners();
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("Dispose value");
+  }
 }
 
 class DemoListenableProviderPage extends StatefulWidget {
@@ -26,7 +32,7 @@ class _DemoListenableProviderPageState extends State<DemoListenableProviderPage>
       ),
       body: Container(
         child: Center(
-            child: ListenableProvider<Counter>(
+            child: ChangeNotifierProvider<Counter>(
                 create: (context) => Counter(),
                 child: CounterWidget()
             )
@@ -51,6 +57,7 @@ class CounterWidget extends StatelessWidget {
             onPressed: () {
               Counter counter = Provider.of(context, listen: false);
               counter.increase();
+              Navigator.pushReplacementNamed(context, "screen2");
             },
             child: Text("Increase"))
       ],
