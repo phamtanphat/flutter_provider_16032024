@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_16032024/demo_listenable_provider_page.dart';
 import 'package:flutter_provider_16032024/demo_provider_page.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: DemoProviderPage()
+      home: DemoListenableProviderPage()
     );
   }
 }
